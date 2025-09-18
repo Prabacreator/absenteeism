@@ -16,11 +16,10 @@ body{
 }
 .container main{
   width: 100%;
-  height: 100%;
 }
 table{
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.7rem;
   border-collapse: collapse;
 }
 table th, td{
@@ -34,6 +33,12 @@ table th, td{
 #tbody td:nth-child(2),
 #tbody td:nth-child(3){
   text-align: left;
+}
+tbody td:nth-child(3):hover{
+  color: 000;
+  font-size: 1.5rem;
+  background: #0f0;
+  font-weight: bold;
 }
 #tbody th:nth-child(1),
 #tbody td:nth-child(4){
@@ -113,19 +118,25 @@ function readName(){
   }).catch(error => console.error(error))
 }
 
-function addData(){
+function addData(key){
   Swal.fire({
-    title: 'Add Data',
+    title: 'Add Present',
     html: `
-    <div class="text-end">
-    <input type="text" id="workername" class="form-control mb-2" list="listName" placeholder="Worker Name">
+    <div class="text-start" style="font-size:0.7rem">
+    <label>Worker Name</label>
+    <input type="text" id="workername" class="form-control" list="listName" value="${key ? key[0] : ''}">
     <datalist id="listName"></datalist>
-    <select id="presence" class="form-control mb-2">
+    <div class="row mt-3">
+    <div class="col">
+    <label>Presence</label>
+    <select id="presence" class="form-control text-center">
     <option>Present</option>
     <option>Unpresent</option>
     </select>
-    <input type="number" id="cashreceipt" class="form-control text-end" placeholder="Cash Receipt" value="000">
-    </div>`,
+    </div><div class="col">
+    <label>Cash Receipt</label>
+    <input type="number" id="cashreceipt" class="form-control text-center" placeholder="Cash Receipt" value="000">
+    </div></div></div>`,
     focusConfirm: false,
     showCancelButton: true,
     confirmButtonText: 'Simpan',
@@ -184,7 +195,7 @@ function getData(keyword){
       tbody.innerHTML =`
       <th>${index+1}</th>
       <td>${row.timestamp}</td>
-      <td>${row.workername}</td>
+      <td onclick="addData(['${row.workername}'])">${row.workername}</td>
       <td>${row.presence}</td>
       <td>${row.cashreceipt}</td>`;
       totals += parseFloat(row.cashreceipt);
