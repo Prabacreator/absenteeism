@@ -19,108 +19,71 @@ root{
   --bs-dark:#212529;
 }
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
-body{
-  color: #f8f9fa;
-  font-family: 'Ubuntu', sans-serif !important;
+body {
+	font-family: 'Ubuntu', sans-serif !important;
 	font-weight: 300 !important;
-  background-image: url(dlajah.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	text-shadow: 1px 1px 1px #212529;
 }
-.container{
-  max-width: 42em;
-  text-shadow: 1px 1px #212529;
+@media (min-width: 768px) {
+  .container-xl {	
+  	max-width: 420px;
+  }
+}
+.transparent{
+  color: #f8f9fa;
+  background-color: transparent;
 }
 table{
   width: 100%;
   border-collapse: collapse;
 }
 table th, td{
-  padding: 0 0.5rem;
-}
-#thead th{
   font-size: 0.7rem;
-  text-align: center;
-  padding: 0.3rem 0.5rem;
+  padding: 0.2rem 0.3rem;
   border: 0.5px solid#f8f9fa;
-}
-#tbody td:nth-child(2),
-#tbody td:nth-child(3){
-  text-align: left;
-  font-size: 0.7rem;
-  border: 0.5px solid#f8f9fa;
-}
-tbody td:nth-child(3):hover{
-  color: #f8f9fa;
-  font-size: 1.5rem;
-  background: #198754;
-  font-weight: bold;
-  text-shadow: 1px 1px #212529;
-}
-#tbody th:nth-child(1),
-#tbody td:nth-child(4){
-  font-size: 0.7rem;
-  text-align: center;
-  border: 0.5px solid#f8f9fa;
-}
-#tbody td:nth-child(5){
-  font-size: 0.7rem;
-  text-align: right;
-  border: 0.5px solid#f8f9fa;
-}
-#tfoot th{
-  border: 0;
-  color: #dc3545;
-  font-size: 1rem;
-  padding: 0.5rem 0.5rem;
-  text-shadow: 1px 1px #f8f9fa;
-  text-align: right;
 }
 #tbody:hover{
-  color: #212529;
-  background: #ccc;
-  font-weight: bold;
-  text-shadow: 1px 1px #f8f9fa;
-}
-svg:hover{
-  color: #f8f9fa;
   font-size: 1rem;
-  background: #198754;
-  border-radius: 5px;
+  background: #6c757d;
 }
+#tfoot th{
+  border: none;
+}
+
 </style>
 </head>
-<body onload="readName()">
-  <div class="container d-flex w-100 h-100 justify0content-center flex-column p-2">
-    <header class="mb-auto p-2">
-      <div class="row">
-        <div class="col-8 divContent"></div>
-        <div class="col-4 text-end">
-          <svg onclick="addData()" xmlns="http://www.w3.org/2000/svg" width="25px" viewBox="0 -960 960 960" fill="currentColor"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z"/></svg>
-        </div>
-      </div>
-    </header>
-    
-    <main class="m-auto p-2 w-100 h-100">
-      <small class="border-bottom"></small>
-      <div class="row mb-2">
-        <div class="col fw-bold fs-5 text-capitalize">Data Absensi</div>
-        <div class="col text-end">
-          <svg onclick="getData()" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z"/></svg>
-        </div>
-      </div>
-      <div class="table-responsive"></div>
-    </main>
-  
-  </div>    
+<body class="text-bg-dark" onload="showName()">
+  <div class="container-fluid d-flex justify-content-center w-100 h-100 overflow-hidden">
+    <video class="pe-none object-fit-cover position-absolute w-100 h-100" style="top:0; left:0;" autoplay muted loop>
+  		<source src="furniture.mp4" type="video/mp4">
+  	</video>
+  	<div class="container-xl d-flex justify-content-center flex-column z-1 position-relative text-capitalize w-100 h-100">
+  	  <header class="mb-auto">
+  	    <div class="row mt-2 fw-bold border-bottom">
+  	      <div class="col fs-4">
+  	        data absensi
+  	      </div>
+  	      <div class="col timestamp text-end" style="font-size:0.5rem"></div>
+  	    </div>
+  	    <ol class="list-group list-group-numbered" style="font-size:0.7rem"></ol>
+  	  </header>
+  	  <main class="m-auto">
+  	    <div class="table-responsive my-2"></div>
+  	  </main>
+  	  <footer class="mt-auto text-end py-2">
+  	    <button type="button" class="btn btn-sm btn-success" onclick="addData()" style="font-size:0.5rem">
+  	      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="17px" fill="currentColor"><path d="M480-240Zm-320 80v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q37 0 73 4.5t72 14.5l-67 68q-20-3-39-5t-39-2q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32h240v80H160Zm400 40v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-340L683-120H560Zm300-263-37-37 37 37ZM620-180h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19ZM480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Z"/></svg>
+  	      Tambah Data
+  	    </button>
+  	  </footer>
+  	</div>
+  </div>
 <script src="bootstrap.bundle.min.js"></script>
 <script src="sweetalert.min.js"></script>
 <script>
 var scriptUrl = 'https://script.google.com/macros/s/AKfycbySfEt9wVvZl3uHy5eYFiqOj0yy_LqWzNU1dqzyQhAWQFFgPLO40533HrBE54mpkA_7/exec';
 
-document.querySelector('small').textContent = new Date().toLocaleString('id-ID', { weekday: 'long' }) +' , '+ new Date().getDate() +' '+ new Date().toLocaleString('id-ID', { month: 'long' }) +' '+ new Date().getFullYear();
-
+document.querySelector('.timestamp').textContent = new Date().toLocaleString('id-ID', { weekday: 'long' }) +' , '+ new Date().getDate() +' '+ new Date().toLocaleString('id-ID', { month: 'long' }) +' '+ new Date().getFullYear();
 
 Swal.fire({
   title: 'Loading...',
@@ -131,26 +94,85 @@ Swal.fire({
     Swal.showLoading();
   }
 });
-      
-function readName(){
-  let divContent = document.querySelector(".divContent");
-  fetch(scriptUrl).then(response => response.json()).then(data => {
-    divContent.innerHTML ='';
+
+function showName(){
+  var listGroup = document.querySelector('.list-group');
+  fetch(scriptUrl)
+  .then(response => response.json())
+  .then(data => {
+    listGroup.innerHTML ='';
     data.workers.forEach((row)=> {
-      let names = document.createElement("p");
-      names.style = 'margin: 0;'
-      names.innerHTML =`
-      <svg onclick="srcData(['${row.workername}'])" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-240 240-480l56-56 144 144v-368h80v368l144-144 56 56-240 240Z"/></svg>
-        ${row.workername}`;
-      divContent.appendChild(names);
+      var listGroupItem = document.createElement('li');
+      listGroupItem.className = 'list-group-item d-flex justify-content-between align-items-start transparent border-0';
+      listGroupItem.innerHTML =`
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">${row.workername}</div>
+        ${row.timestamp}
+      </div>
+      <span class="badge text-bg-success rounded-pill" onclick="srcData(['${row.workername}'])">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-240 240-480l56-56 144 144v-368h80v368l144-144 56 56-240 240Z"/></svg>
+      </span>`;
+      listGroup.appendChild(listGroupItem);
     });
-    getData();
-  }).catch(error => console.error(error))
+    Swal.close();
+  })
+  .catch(error => Swal.close())
+}
+
+function srcData(keyword){
+  Swal.fire({
+    title: 'Loading...',
+    text: 'Please wait',
+    allowOutsideClick: false,
+    showConfirmButton: false,
+    willOpen: () => {
+      Swal.showLoading();
+    }
+  });
+  let div = document.querySelector(".table-responsive");
+  fetch(`${scriptUrl}?keyword=${keyword}`).then(response => response.json()).then(data => {
+    div.innerHTML = "";
+    let title = document.createElement("div");
+    title.className ='row';
+    title.innerHTML =`
+    <div class="col fs-2 fw-bold">${keyword}</div>
+    <div class="col text-end">
+    <button type="button" class="btn btn-sm btn-success"  onclick="addData(['${keyword}'])" style="font-size:0.5rem">
+  	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="17px" fill="currentColor"><path d="M167-120q-21 5-36.5-10.5T120-167l40-191 198 198-191 40Zm191-40L160-358l458-458q23-23 57-23t57 23l84 84q23 23 23 57t-23 57L358-160Zm317-600L261-346l85 85 414-414-85-85Z"/></svg>
+  	 Tambah Absen</button></div>`;
+    div.appendChild(title);
+    let table = document.createElement("table");
+    table.className = 'transparent font-monospace'
+    let thead = table.insertRow();
+    thead.id = 'thead';
+    thead.innerHTML =`
+    <th>No</th>
+    <th>Tanggal</th>
+    <th>Absen</th>
+    <th>Kasbon</th>`;
+    let totals = 0;
+    data.presences.forEach((row, index)=> {
+      let tbody = table.insertRow();
+      tbody.id = 'tbody';
+      tbody.innerHTML =`
+      <th>${index+1}</th>
+      <td>${row.timestamp}</td>
+      <td class="text-center">${row.presence}</td>
+      <td class="text-end">${row.cashreceipt}</td>`;
+      totals += parseFloat(row.cashreceipt);
+    });
+    let tfoot = table.insertRow();
+    tfoot.id = 'tfoot';
+    tfoot.innerHTML =`
+    <th colspan="5" class="text-end">${totals}</th>`;
+    div.appendChild(table);
+    Swal.close();
+  }).catch(error => Swal.close());
 }
 
 function addData(key){
   Swal.fire({
-    title: 'Absensi',
+    title: 'Add Present',
     html: `
     <div class="text-start">
     <label>Nama</label>
@@ -164,12 +186,13 @@ function addData(key){
     </select>
     </div><div class="col">
     <label>Kasbon</label>
-    <input type="number" id="cashreceipt" class="form-control text-center" placeholder="Cash Receipt" value="000">
+    <input type="number" id="cashreceipt" class="form-control text-center" value="0" onclick="document.querySelector('#cashreceipt').value=null">
     </div></div></div>`,
     focusConfirm: false,
     showCancelButton: true,
-    confirmButtonText: 'Absen',
-    cancelButtonText: 'Cancel',
+    confirmButtonText: 'Simpan',
+    confirmButtonColor: '#198754',
+    cancelButtonText: 'Batal',
     preConfirm: () => {
       return {
         timestamp: new Date().toLocaleString('id-ID',{ weekday:'long'})+', '+new Date().toLocaleString('id-ID'),
@@ -202,99 +225,6 @@ function addData(key){
       .catch(error => console.error(error));
     }
   });
-}
-
-function getData(){
-  Swal.fire({
-    title: 'Loading...',
-    text: 'Please wait',
-    allowOutsideClick: false,
-    showConfirmButton: false,
-    willOpen: () => {
-      Swal.showLoading();
-    }
-  });
-  let div = document.querySelector(".table-responsive");
-  fetch(scriptUrl).then(response => response.json()).then(data => {
-    div.innerHTML = "";
-    let table = document.createElement("table");
-    table.className = 'font-monospace'
-    let thead = table.insertRow();
-    thead.id = 'thead';
-    thead.innerHTML =`
-    <th>No</th>
-    <th>Tanggal</th>
-    <th>Nama</th>
-    <th>Absen</th>
-    <th>Kasbon</th>`;
-    let totals = 0;
-    data.presences.forEach((row, index)=> {
-      let tbody = table.insertRow();
-      tbody.id = 'tbody';
-      tbody.innerHTML =`
-      <th>${index+1}</th>
-      <td>${row.timestamp}</td>
-      <td onclick="addData(['${row.workername}'])">${row.workername}</td>
-      <td>${row.presence}</td>
-      <td>${row.cashreceipt}</td>`;
-      totals += parseFloat(row.cashreceipt);
-    });
-    let tfoot = table.insertRow();
-    tfoot.id = 'tfoot';
-    tfoot.innerHTML =`
-    <th colspan="5">${totals}</th>`;
-    div.appendChild(table);
-    Swal.close();
-  }).catch(error => console.error(error));
-}
-
-function srcData(keyword){
-  Swal.fire({
-    title: 'Loading...',
-    text: 'Please wait',
-    allowOutsideClick: false,
-    showConfirmButton: false,
-    willOpen: () => {
-      Swal.showLoading();
-    }
-  });
-  let div = document.querySelector(".table-responsive");
-  fetch(`${scriptUrl}?keyword=${keyword}`).then(response => response.json()).then(data => {
-    div.innerHTML = "";
-    let title = document.createElement("div");
-    title.className = 'row text-success';
-    title.innerHTML =`
-    <div class="col-8 fs-2 fw-bold text-capitalize">${keyword}</div>
-    <div class="col-4 text-end">
-    <svg onclick="addData(['${keyword}'])" xmlns="http://www.w3.org/2000/svg" width="25px" viewBox="0 -960 960 960" fill="currentColor"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z"/></svg></div>`;
-    div.appendChild(title);
-    let table = document.createElement("table");
-    table.className = 'font-monospace'
-    let thead = table.insertRow();
-    thead.id = 'thead';
-    thead.innerHTML =`
-    <th>No</th>
-    <th>Tanggal</th>
-    <th>Absen</th>
-    <th>Kasbon</th>`;
-    let totals = 0;
-    data.presences.forEach((row, index)=> {
-      let tbody = table.insertRow();
-      tbody.id = 'tbody';
-      tbody.innerHTML =`
-      <th>${index+1}</th>
-      <td>${row.timestamp}</td>
-      <td>${row.presence}</td>
-      <td>${row.cashreceipt}</td>`;
-      totals += parseFloat(row.cashreceipt);
-    });
-    let tfoot = table.insertRow();
-    tfoot.id = 'tfoot';
-    tfoot.innerHTML =`
-    <th colspan="5">${totals}</th>`;
-    div.appendChild(table);
-    Swal.close();
-  }).catch(error => console.error(error));
 }
 </script>
 </body>
